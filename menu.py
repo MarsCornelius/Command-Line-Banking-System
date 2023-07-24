@@ -5,13 +5,12 @@ from customer import Customer
 def welcome():
     print("Welcome to Mars Student Bank")
     print("Select one of the following to get started: ")
-    option = input("1.Login \n2.Create an Account \n3.Reset Password \n4.Make an Appointment \n5.Exit \n-->")
+    option = input("1.Login \n2.Create an Account \n3.Reset Password \n4.Exit \n-->")
     print()
     return option
 
 
-def Log_in():
-
+def log_in():
     print("~LOGIN CREDENTIALS~")
 
     user = input("Primary Account Number: ")
@@ -52,15 +51,10 @@ def create_user_account():
 
     return customer_info
 
+
 def reset_password():
     print("~RESET MY PASSWORD~")
 
     user_to_reset = input("Enter Username: ")
 
-    return  user_to_reset
-
-def make_an_appointment():
-    print("Welcome! What can we do for you today?\n")
-    option = input("1.Apply for an account.\n2.Apply for a Loan\n3.Make an Enquiry\n")
-
-    return option
+    return user_to_reset

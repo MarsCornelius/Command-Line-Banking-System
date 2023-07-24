@@ -1,4 +1,5 @@
 
+
 class Navigation:
     def __init__(self, app_option=0, cust_option=None, dep_option=None, loan_option=None, login_option=None,
                  menu_option=0):
@@ -15,21 +16,8 @@ class Navigation:
 
     @app_option.setter
     def app_option(self, app_option):
-        try:
-            while True:
-                if app_option.isdigit():
-                    if 1 <= int(app_option) <= 3:
-                        self._app_option = int(app_option)
-                        print("On my way to apply for an account.")
-                        break
-                    else:
-                        print("Invalid option\n")
+        self._app_option = app_option
 
-                else:
-                    print("Numbers only.\n")
-                    break
-        except TypeError as e:
-            print(e)
 
     @property
     def cust_option(self):
