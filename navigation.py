@@ -1,11 +1,7 @@
-from customer import Customer
-from login import Login
-from menu import welcome
-
 
 class Navigation:
-    def __init__(self, app_option=None, cust_option=None, dep_option=None, loan_option=None, login_option=None,
-                 menu_option=""):
+    def __init__(self, app_option=0, cust_option=None, dep_option=None, loan_option=None, login_option=None,
+                 menu_option=0):
         self._app_option = app_option
         self._cust_option = cust_option
         self._dep_option = dep_option
@@ -19,7 +15,21 @@ class Navigation:
 
     @app_option.setter
     def app_option(self, app_option):
-        self._app_option = app_option
+        try:
+            while True:
+                if app_option.isdigit():
+                    if 1 <= int(app_option) <= 3:
+                        self._app_option = int(app_option)
+                        print("On my way to apply for an account.")
+                        break
+                    else:
+                        print("Invalid option\n")
+
+                else:
+                    print("Numbers only.\n")
+                    break
+        except TypeError as e:
+            print(e)
 
     @property
     def cust_option(self):
@@ -59,14 +69,19 @@ class Navigation:
 
     @menu_option.setter
     def menu_option(self, menu_option):
-        while True:
-            if menu_option.isnumeric():
-                if 1 <= int(menu_option) <= 5:
-                    self._menu_option = int(menu_option)
-                    break
+        from main import main
+        try:
+            while True:
+                if menu_option.isdigit():
+                    if 1 <= int(menu_option) <= 5:
+                        self._menu_option = int(menu_option)
+                        break
+                    else:
+                        print("Invalid Option\n")
+                        main()
                 else:
-                    print("Incorrect Value\n")
-                    welcome()
-            else:
-                print("Numbers Only.\n")
-                welcome()
+                    print("Numbers Only.\n")
+                    main()
+
+        except TypeError:
+            print("Invalid data type.")

@@ -1,10 +1,9 @@
-from customer import Customer
 from navigation import Navigation
-from login import Login
-from menu import welcome, Log_in, create_user_account
+from menu import welcome, Log_in, create_user_account, reset_password, make_an_appointment
 import time
 
-if __name__ == '__main__':
+
+def main():
     try:
         navigation = Navigation()
         navigation.menu_option = welcome()
@@ -14,9 +13,16 @@ if __name__ == '__main__':
             case 2:
                 create_user_account()
             case 3:
-                pass
+                reset_password()
             case 4:
-                pass
+                navigation.app_option = make_an_appointment()
+                match navigation.app_option:
+                    case 1:
+                        pass
+                    case 2:
+                        pass
+                    case 3:
+                        pass
             case 5:
                 print("Exiting System...")
                 time.sleep(3)
@@ -24,5 +30,11 @@ if __name__ == '__main__':
                 exit(0)
 
     except KeyboardInterrupt:
-        print("\nGood bye!\n")
+        print("\nExiting System...")
+        time.sleep(3)
+        print("Good-Bye!")
+        exit(0)
 
+
+if __name__ == '__main__':
+    main()
