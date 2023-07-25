@@ -1,11 +1,12 @@
 class Customer:
     def __init__(self, first_name="", last_name="", birth_date="", address="",
-                 city="", province="", country="", mobile_no=""):
+                 city="", postal_code ="", province="", country="", mobile_no=""):
         self._first_name = first_name
         self._last_name = last_name
         self._birth_date = birth_date
         self._address = address
         self._city = city
+        self._postal_code = postal_code
         self._province = province
         self._country = country
         self._mobile_no = mobile_no
@@ -16,7 +17,7 @@ class Customer:
 
     @first_name.setter
     def first_name(self, first_name):
-        self._first_name = first_name
+       self._first_name = first_name
 
     @property
     def last_name(self):
@@ -49,6 +50,14 @@ class Customer:
     @city.setter
     def city(self, city):
         self._city = city
+
+    @property
+    def postal_code(self):
+        return self._postal_code
+
+    @postal_code.setter
+    def postal_code(self, postal_code):
+        self._postal_code = postal_code
 
     @property
     def province(self):
