@@ -1,6 +1,6 @@
 class Customer:
     def __init__(self, first_name="", last_name="", birth_date="", address="",
-                 city="", postal_code="", province="", country="", mobile_no=""):
+                 city="", postal_code="", province="", country="", mobile_no="", email=""):
         self._first_name = first_name
         self._last_name = last_name
         self._birth_date = birth_date
@@ -10,6 +10,7 @@ class Customer:
         self._province = province
         self._country = country
         self._mobile_no = mobile_no
+        self._email = email
 
     @property
     def first_name(self):
@@ -109,3 +110,15 @@ class Customer:
             self._mobile_no = mobile_no
         except ValueError:
             print("Invalid mobile number.")
+
+    @property
+    def email(self):
+        return self._email
+
+    @email.setter
+    def email(self, email):
+        try:
+            self._mobile_no = email
+        except ValueError:
+            print("Invalid email address.")
+

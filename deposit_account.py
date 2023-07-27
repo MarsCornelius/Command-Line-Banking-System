@@ -1,9 +1,10 @@
 class DepositAccount:
-    def __init__(self, customer_id, account_no, acct_type, opening_balance, interest_rate):
+    def __init__(self, customer_id, account_no, acct_type, opening_balance, current_balance, interest_rate):
         self._customer_id = customer_id
         self._account_no = account_no
         self._acct_type = acct_type
         self._opening_balance = opening_balance
+        self._current_balance = current_balance
         self._interest_rate = interest_rate
 
     @property
@@ -51,6 +52,14 @@ class DepositAccount:
             print("Invalid opening balance.")
 
     @property
+    def current_balance(self):
+        return self._current_balance
+
+    @current_balance.setter
+    def current_balance(self, current_balance):
+        self._current_balance = current_balance
+
+    @property
     def interest_rate(self):
         return self._interest_rate
 
@@ -75,8 +84,8 @@ class DepositAccount:
 
 
 class Saving(DepositAccount):
-    def __init__(self, account_no, acct_type, opening_balance, interest_rate, minimum_balance):
-        super().__init__(None, account_no, acct_type, opening_balance, interest_rate)
+    def __init__(self, account_no, acct_type, opening_balance, current_balance, interest_rate, minimum_balance):
+        super().__init__(None, account_no, acct_type, opening_balance, current_balance, interest_rate)
         self._minimum_balance = minimum_balance
 
     @property
@@ -95,8 +104,8 @@ class Saving(DepositAccount):
 
 
 class Chequing(DepositAccount):
-    def __init__(self, account_no, acct_type, opening_balance, interest_rate, overdraft_limit):
-        super().__init__(None, account_no, acct_type, opening_balance, interest_rate)
+    def __init__(self, account_no, acct_type, opening_balance, interest_rate, current_balance, overdraft_limit):
+        super().__init__(None, account_no, acct_type, opening_balance, current_balance, interest_rate)
         self._overdraft_limit = overdraft_limit
 
     @property

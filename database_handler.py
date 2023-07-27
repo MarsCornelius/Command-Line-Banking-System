@@ -21,12 +21,18 @@ def database_create_user(customer_info):
 def database_reset_password(username):
     pass
 
+
 def database_fetch_transaction_history(account_no, acct_type):
     pass
+
 
 def database_select_transactions(account_no, transaction_id, amount, date):
     pass
 
 
 def database_export_transactions(account_no):
+    pass
+
+
+def send_email(first_name, last_name, username, password):
     pass

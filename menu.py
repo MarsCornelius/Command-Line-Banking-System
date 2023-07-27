@@ -31,7 +31,7 @@ def log_in():
 
 def create_user_account():
     data = 0
-    no_of_fields = 9
+    no_of_fields = 10
     c_info = []
     while data < no_of_fields:
         if data == 0:
@@ -127,8 +127,18 @@ def create_user_account():
                 else:
                     print("Invalid input. Please enter a valid Mobile Number.")
             except ValueError:
-                print("Invalid input. Please enter a valid First Name.")
-
+                print("Invalid input. Please enter a valid Mobile Number.")
+        elif data == 9:
+            try:
+                email = input("Email : ")
+                start = email.find('@')
+                if start > 0:
+                    c_info.append(email)
+                    data += 1
+                else:
+                    print("Invalid input. Please enter a valid email address.")
+            except ValueError:
+                print("Invalid input. Please enter a valid email address.")
     print(c_info)  # to remove
     return c_info
 

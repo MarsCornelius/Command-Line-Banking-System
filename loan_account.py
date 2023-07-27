@@ -1,8 +1,8 @@
 class LoanAccount:
-    def __init__(self, customer_id, account_no, starting_balance, interest_rate, payoff_amount):
+    def __init__(self, customer_id, account_no, amount, interest_rate, payoff_amount):
         self._customer_id = customer_id
         self._account_no = account_no
-        self._starting_balance = starting_balance
+        self._amount = amount
         self._interest_rate = interest_rate
         self._payoff_amount = payoff_amount
 
@@ -29,13 +29,13 @@ class LoanAccount:
             print("Invalid account number.")
 
     @property
-    def starting_balance(self):
-        return self._starting_balance
+    def amount(self):
+        return self._amount
 
-    @starting_balance.setter
-    def starting_balance(self, starting_balance):
+    @amount.setter
+    def amount(self, amount):
         try:
-            self._starting_balance = starting_balance
+            self._amount = amount
         except ValueError:
             print("Invalid starting balance.")
 
@@ -75,8 +75,8 @@ class LoanAccount:
 
 
 class PersonalLoan(LoanAccount):
-    def __init__(self, account_no, starting_balance, interest_rate, payoff_amount, reason):
-        super().__init__(None, account_no, starting_balance, interest_rate, payoff_amount)
+    def __init__(self, account_no, amount, interest_rate, payoff_amount, reason):
+        super().__init__(None, account_no, amount, interest_rate, payoff_amount)
         self._reason = reason
 
     @property
@@ -92,8 +92,8 @@ class PersonalLoan(LoanAccount):
 
 
 class MortgageLoan(LoanAccount):
-    def __init__(self, account_no, starting_balance, interest_rate, payoff_amount, property_type):
-        super().__init__(None, account_no, starting_balance, interest_rate, payoff_amount)
+    def __init__(self, account_no, amount, interest_rate, payoff_amount, property_type):
+        super().__init__(None, account_no, amount, interest_rate, payoff_amount)
         self._property_type = property_type
 
     @property
