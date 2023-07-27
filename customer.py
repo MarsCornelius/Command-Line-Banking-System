@@ -1,6 +1,6 @@
 class Customer:
     def __init__(self, first_name="", last_name="", birth_date="", address="",
-                 city="", postal_code ="", province="", country="", mobile_no=""):
+                 city="", postal_code="", province="", country="", mobile_no=""):
         self._first_name = first_name
         self._last_name = last_name
         self._birth_date = birth_date
@@ -17,7 +17,10 @@ class Customer:
 
     @first_name.setter
     def first_name(self, first_name):
-       self._first_name = first_name
+        try:
+            self._first_name = first_name
+        except ValueError:
+            print("Invalid first name.")
 
     @property
     def last_name(self):
@@ -25,7 +28,10 @@ class Customer:
 
     @last_name.setter
     def last_name(self, last_name):
-        self._last_name = last_name
+        try:
+            self._last_name = last_name
+        except ValueError:
+            print("Invalid last name.")
 
     @property
     def birth_date(self):
@@ -33,7 +39,10 @@ class Customer:
 
     @birth_date.setter
     def birth_date(self, birth_date):
-        self._birth_date = birth_date
+        try:
+            self._birth_date = birth_date
+        except ValueError:
+            print("Invalid birth date.")
 
     @property
     def address(self):
@@ -41,7 +50,10 @@ class Customer:
 
     @address.setter
     def address(self, address):
-        self._address = address
+        try:
+            self._address = address
+        except ValueError:
+            print("Invalid address.")
 
     @property
     def city(self):
@@ -49,7 +61,10 @@ class Customer:
 
     @city.setter
     def city(self, city):
-        self._city = city
+        try:
+            self._city = city
+        except ValueError:
+            print("Invalid city.")
 
     @property
     def postal_code(self):
@@ -57,7 +72,10 @@ class Customer:
 
     @postal_code.setter
     def postal_code(self, postal_code):
-        self._postal_code = postal_code
+        try:
+            self._postal_code = postal_code
+        except ValueError:
+            print("Invalid postal code.")
 
     @property
     def province(self):
@@ -65,7 +83,10 @@ class Customer:
 
     @province.setter
     def province(self, province):
-        self._province = province
+        try:
+            self._province = province
+        except ValueError:
+            print("Invalid province.")
 
     @property
     def country(self):
@@ -73,7 +94,10 @@ class Customer:
 
     @country.setter
     def country(self, country):
-        self._country = country
+        try:
+            self._country = country
+        except ValueError:
+            print("Invalid country.")
 
     @property
     def mobile_no(self):
@@ -81,4 +105,7 @@ class Customer:
 
     @mobile_no.setter
     def mobile_no(self, mobile_no):
-        self._mobile_no = mobile_no
+        try:
+            self._mobile_no = mobile_no
+        except ValueError:
+            print("Invalid mobile number.")

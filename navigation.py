@@ -1,5 +1,3 @@
-
-
 class Navigation:
     def __init__(self, app_option=0, cust_option=None, dep_option=None, loan_option=None, login_option=None,
                  menu_option=0):
@@ -16,8 +14,10 @@ class Navigation:
 
     @app_option.setter
     def app_option(self, app_option):
-        self._app_option = app_option
-
+        try:
+            self._app_option = app_option
+        except ValueError:
+            print("Invalid option.")
 
     @property
     def cust_option(self):
@@ -25,7 +25,10 @@ class Navigation:
 
     @cust_option.setter
     def cust_option(self, cust_option):
-        self._cust_option = cust_option
+        try:
+            self._cust_option = cust_option
+        except ValueError:
+            print("Invalid option.")
 
     @property
     def dep_option(self):
@@ -33,7 +36,10 @@ class Navigation:
 
     @dep_option.setter
     def dep_option(self, dep_option):
-        self._dep_option = dep_option
+        try:
+            self._dep_option = dep_option
+        except ValueError:
+            print("Invalid option.")
 
     @property
     def loan_option(self):
@@ -41,7 +47,10 @@ class Navigation:
 
     @loan_option.setter
     def loan_option(self, loan_option):
-        self._loan_option = loan_option
+        try:
+            self._loan_option = loan_option
+        except ValueError:
+            print("Invalid option.")
 
     @property
     def login_option(self):
@@ -49,7 +58,10 @@ class Navigation:
 
     @login_option.setter
     def login_option(self, login_option):
-        self._login_option = login_option
+        try:
+            self._login_option = login_option
+        except ValueError:
+            print("Invalid option.")
 
     @property
     def menu_option(self):

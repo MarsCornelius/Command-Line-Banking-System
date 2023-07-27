@@ -129,7 +129,7 @@ def create_user_account():
             except ValueError:
                 print("Invalid input. Please enter a valid First Name.")
 
-    print(c_info)
+    print(c_info)  # to remove
     return c_info
 
 

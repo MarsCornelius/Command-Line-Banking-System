@@ -16,7 +16,10 @@ class Application:
 
     @first_name.setter
     def first_name(self, first_name):
-        self._first_name = first_name
+        try:
+            self._first_name = first_name
+        except ValueError:
+            print("Invalid first name.")
 
     @property
     def last_name(self):
@@ -24,7 +27,10 @@ class Application:
 
     @last_name.setter
     def last_name(self, last_name):
-        self._last_name = last_name
+        try:
+            self._last_name = last_name
+        except ValueError:
+            print("Invalid last name.")
 
     @property
     def account_no(self):
@@ -32,7 +38,10 @@ class Application:
 
     @account_no.setter
     def account_no(self, account_no):
-        self._account_no = account_no
+        try:
+            self._account_no = account_no
+        except ValueError:
+            print("Invalid account number.")
 
     @property
     def acct_type(self):
@@ -40,7 +49,10 @@ class Application:
 
     @acct_type.setter
     def acct_type(self, acct_type):
-        self._acct_type = acct_type
+        try:
+            self._acct_type = acct_type
+        except ValueError:
+            print("Invalid acct_type.")
 
     @property
     def email(self):
@@ -48,7 +60,10 @@ class Application:
 
     @email.setter
     def email(self, email):
-        self._email = email
+        try:
+            self._email = email
+        except ValueError:
+            print("Invalid email.")
 
     @property
     def destination(self):
@@ -56,7 +71,10 @@ class Application:
 
     @destination.setter
     def destination(self, destination):
-        self._destination = destination
+        try:
+            self._destination = destination
+        except ValueError:
+            print("Invalid destination.")
 
     @property
     def subject(self):
@@ -64,7 +82,10 @@ class Application:
 
     @subject.setter
     def subject(self, subject):
-        self._subject = subject
+        try:
+            self._subject = subject
+        except ValueError:
+            print("Invalid subject.")
 
     @property
     def message(self):
@@ -72,13 +93,13 @@ class Application:
 
     @message.setter
     def message(self, message):
-        self._message = message
+        try:
+            self._message = message
+        except ValueError:
+            print("Invalid message.")
 
-    def apply_for_account(self):
+    def apply_for_account(self, first_name, last_name, account, acct_type):
         pass
 
     def apply_for_loan(self, first_name, last_name, account, acct_type):
-        pass
-
-    def make_an_enquiry(self,):
         pass

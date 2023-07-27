@@ -10,7 +10,10 @@ class Login:
 
     @username.setter
     def username(self, username):
-        self._username = username
+        try:
+            self._username = username
+        except ValueError:
+            print("Invalid username.")
 
     @property
     def password(self):
@@ -18,4 +21,7 @@ class Login:
 
     @password.setter
     def password(self, password):
-        self._password = password
+        try:
+            self._password = password
+        except ValueError:
+            print("Invalid username.")
