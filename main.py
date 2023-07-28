@@ -1,6 +1,8 @@
 from navigation import Navigation
 from menu import welcome, log_in, create_user_account, reset_password
+from database_handler import database_create_user
 import time
+
 
 
 def main():
@@ -29,3 +31,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
