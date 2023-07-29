@@ -34,7 +34,8 @@ def database_validate_credentials(login_info):
         else:
             print("Login failed.")
 
-    connect_to_database(login_info[0],login_info[1])
+    connect_to_database(login_info[0], login_info[1])
+    # needs loops an exception handling
 
 
 def database_add_user_info(customer_info):
@@ -49,10 +50,22 @@ def database_add_user_info(customer_info):
 
     cursor.close()
     database.close()
+    # needs loops an exception handling
 
 
-def database_reset_password(username):
-    pass
+def database_reset_password(customer_id, username, new_password):
+    update_password = "UPDATE users SET password = %s WHERE customer_id = %s"
+    new_encrypted_password = bcrypt.hashpw(new_password.encode('utf-8'), bcrypt.gensalt())
+
+    cursor.execute(update_password, (new_encrypted_password, customer_id))
+    database.commit()
+
+    update_mysql_password = "ALTER user %s@'localhost' IDENTIFIED BY %s"
+    cursor.execute(update_mysql_password, (username, new_password))
+    database.commit()
+
+    refresh = "FLUSH PRIVILEGES"
+    cursor.execute(refresh)
 
 
 def database_fetch_transaction_history(account_no, acct_type):
@@ -67,13 +80,14 @@ def database_export_transactions(account_no):
     pass
 
 
-def generate_username_and_password():
+def database_generate_username_and_password():
     pool = string.ascii_letters + string.digits
     password = ''
     for _ in range(12):
         password += random.choice(pool)
 
     return password
+    # needs exception handling
 
 
 def database_create_user(username, password):
@@ -106,7 +120,7 @@ def database_create_user(username, password):
 
 def send_email(first_name, last_name, email):
     username = first_name[0:3] + last_name[0:3]
-    password = generate_username_and_password()
+    password = database_generate_username_and_password()
 
     database_create_user(username, password)
 
@@ -124,3 +138,4 @@ def send_email(first_name, last_name, email):
     server.login("kibwemc.dev@gmail.com", "rvveonrniggxvosa")
     server.send_message(msg)
     server.quit()
+# needs loops an exception handling

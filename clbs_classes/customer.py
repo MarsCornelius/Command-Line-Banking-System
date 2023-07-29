@@ -121,4 +121,3 @@ class Customer:
             self._mobile_no = email
         except ValueError:
             print("Invalid email address.")
-

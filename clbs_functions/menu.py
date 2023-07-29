@@ -1,12 +1,12 @@
 from clbs_classes.login import Login
 from datetime import datetime
-from clbs_functions.database_handler import database_add_user_info
+from clbs_functions.database_handler import database_add_user_info, database_reset_password
 import maskpass
 
 
 def welcome():
-    print("Welcome to Mars Student Bank")
-    print("Select one of the following to get started: ")
+    print("             Welcome to ISB")
+    print("Select one of the following to get started:\n")
     try:
         option = input("1.Login \n2.Create an Account \n3.Reset Password \n4.Exit \n-->")
         print()
@@ -21,13 +21,11 @@ def log_in():
     try:
         user = input("Primary Account Number: ")
         Login.username = user
-
-        password = maskpass.askpass(prompt="Password:",mask="*")
+        password = maskpass.askpass(prompt="Password:", mask="*")
         Login.password = password
     except ValueError:
         print("Login Error: Invalid credentials.")
         return None
-
     return Login.username, Login.password
 
 
@@ -147,9 +145,10 @@ def create_user_account():
 def reset_password():
     print("~RESET MY PASSWORD~")
     try:
+        customer_id = input("Enter Customer ID: ")
         user_to_reset = input("Enter Username: ")
+        new_password = input("Enter new password: ")
     except ValueError:
         print("Reset Password Error: Invalid username")
         return None
-
-    return user_to_reset
+    database_reset_password(customer_id, user_to_reset, new_password)

@@ -1,4 +1,4 @@
-from clbs_functions.database_handler import database_validate_credentials
+from clbs_functions.database_handler import database_validate_credentials, database_reset_password
 from clbs_classes.navigation import Navigation
 from clbs_functions.menu import welcome, log_in, create_user_account, reset_password
 import time
@@ -30,4 +30,5 @@ def main():
 
 
 if __name__ == '__main__':
+   # database_reset_password(" 100024", "KibGoo", "pineapple")
     main()
