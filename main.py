@@ -1,8 +1,7 @@
-from navigation import Navigation
-from menu import welcome, log_in, create_user_account, reset_password
-from database_handler import database_create_user
+from clbs_functions.database_handler import database_validate_credentials
+from clbs_classes.navigation import Navigation
+from clbs_functions.menu import welcome, log_in, create_user_account, reset_password
 import time
-
 
 
 def main():
@@ -11,7 +10,8 @@ def main():
         navigation.menu_option = welcome()
         match navigation.menu_option:
             case 1:
-                user_info = log_in()
+                login_info = log_in()
+                database_validate_credentials(login_info)
             case 2:
                 create_user_account()
             case 3:
@@ -31,4 +31,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-

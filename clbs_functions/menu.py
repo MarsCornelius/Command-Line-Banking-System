@@ -1,6 +1,8 @@
-from login import Login
+from clbs_classes.login import Login
 from datetime import datetime
-from database_handler import database_create_user
+from clbs_functions.database_handler import database_add_user_info
+import maskpass
+
 
 def welcome():
     print("Welcome to Mars Student Bank")
@@ -20,7 +22,7 @@ def log_in():
         user = input("Primary Account Number: ")
         Login.username = user
 
-        password = input("Password: ")
+        password = maskpass.askpass(prompt="Password:",mask="*")
         Login.password = password
     except ValueError:
         print("Login Error: Invalid credentials.")
@@ -139,8 +141,7 @@ def create_user_account():
                     print("Invalid input. Please enter a valid email address.")
             except ValueError:
                 print("Invalid input. Please enter a valid email address.")
-    database_create_user(c_info)
-
+    database_add_user_info(c_info)
 
 
 def reset_password():
