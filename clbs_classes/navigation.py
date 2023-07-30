@@ -69,7 +69,7 @@ class Navigation:
 
     @menu_option.setter
     def menu_option(self, menu_option):
-        from main import main
+        from main import launch
         try:
             while True:
                 if menu_option.isdigit():
@@ -78,10 +78,10 @@ class Navigation:
                         break
                     else:
                         print("Invalid Option\n")
-                        main()
+                        launch()
                 else:
                     print("Numbers Only.\n")
-                    main()
+                    launch()
 
         except TypeError:
             print("Invalid data type.")

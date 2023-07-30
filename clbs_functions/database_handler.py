@@ -5,7 +5,6 @@ import random
 import string
 from email.message import EmailMessage
 from email.header import Header
-
 database = mysql.connector.connect(username="root", password="marscornelius", host='localhost', database="bank")
 cursor = database.cursor()
 
@@ -14,7 +13,12 @@ def connect_to_database(username, password):
     try:
         db = mysql.connector.connect(username=username, password=password, host='localhost', database="bank")
         curr = db.cursor()
-        return db, curr
+
+        if db.is_connected():
+            print(f"\nGood Day {username}, \nWhat would you like to do today?\n")
+            return db, curr
+        else:
+            print("Server not found.")
 
     except mysql.connector.Error as e:
         print("Error: ", e)
@@ -66,6 +70,7 @@ def database_reset_password(customer_id, username, new_password):
 
     refresh = "FLUSH PRIVILEGES"
     cursor.execute(refresh)
+    # need exception handling
 
 
 def database_fetch_transaction_history(account_no, acct_type):

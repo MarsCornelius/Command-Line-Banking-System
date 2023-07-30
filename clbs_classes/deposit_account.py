@@ -82,6 +82,9 @@ class DepositAccount:
     def withdraw_funds(self):
         pass
 
+    def transfer_funds(self):
+        pass
+
 
 class Saving(DepositAccount):
     def __init__(self, account_no, acct_type, opening_balance, current_balance, interest_rate, minimum_balance):

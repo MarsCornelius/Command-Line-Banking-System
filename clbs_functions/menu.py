@@ -1,7 +1,10 @@
 from clbs_classes.login import Login
 from datetime import datetime
-from clbs_functions.database_handler import database_add_user_info, database_reset_password
+from clbs_classes.navigation import Navigation
+from clbs_functions.database_handler import database_add_user_info, database_reset_password, \
+    database_validate_credentials
 import maskpass
+import time
 
 
 def welcome():
@@ -152,3 +155,59 @@ def reset_password():
         print("Reset Password Error: Invalid username")
         return None
     database_reset_password(customer_id, user_to_reset, new_password)
+
+
+def launch():
+    try:
+        navigation = Navigation()
+        navigation.menu_option = welcome()
+        match navigation.menu_option:
+            case 1:
+                login_info = log_in()
+                database_validate_credentials(login_info)
+            case 2:
+                create_user_account()
+            case 3:
+                reset_password()
+            case 4:
+                print("\nExiting System...")
+                time.sleep(3)
+                print("Good-Bye!")
+                exit(0)
+
+    except KeyboardInterrupt:
+        print("\nExiting System...")
+        time.sleep(3)
+        print("Good-Bye!")
+        exit(0)
+
+
+def account_menu():
+    while True:
+        menu_opt = int(input("1.Accounts\n2.Logout\n3.Exit\n--> "))
+        if menu_opt == 1:
+            while True:
+                inner_opt = int(input("\n1.Deposit Accounts\n2.Loan Accounts\n3.Back\n--> "))
+                if inner_opt == 1:
+                    while True:
+                        dep_option = int(input("1.Deposit 2.Withdrawal 3.Transfer 4.History 5.Open "
+                                               "6.Close 7.Back 8.Exit\n--> "))
+                        # missing functionality
+                elif inner_opt == 2:
+                    while True:
+                        loan_option = int(input("1.Make Payment 2.Principal Payment 3.Make Interest Payment "
+                                                "4.Payoff 5.Back\n--> "))
+                        # missing functionality
+                elif inner_opt ==3:
+                    account_menu()
+                else:
+                    print("Account Error: Invalid input\n")
+        elif menu_opt == 2:
+            launch()
+        elif menu_opt == 3:
+            print("\nExiting System...")
+            time.sleep(3)
+            print("Good-Bye!")
+            exit(0)
+        else:
+            print("Account Error: Invalid input\n")
