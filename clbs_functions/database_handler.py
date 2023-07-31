@@ -137,6 +137,7 @@ def database_create_user(username, password):
         get_customer_id = "SELECT max(customer_id) from customer"
         cursor.execute(get_customer_id)
         customer_id = cursor.fetchone()[0]
+
         # add user to the users table, to facilitate validation.
         add_to_user = "INSERT INTO users (customer_id, username, password) values (%s, %s,%s)"
         encrypted_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())

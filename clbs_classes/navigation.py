@@ -69,7 +69,7 @@ class Navigation:
 
     @menu_option.setter
     def menu_option(self, menu_option):
-        from main import launch
+        from clbs_functions.menu import launch
         try:
             while True:
                 if menu_option.isdigit():
