@@ -83,7 +83,6 @@ def database_reset_password(customer_id, username, new_password):
 def database_fetch_transaction_history(account_no, acct_type):
     pass
 
-# "1.Deposit 2.Withdrawal 3.Transfer 4.History 5.Back 6.Exit\n--> "
 
 def database_process_transactions(outer, inner, acct_no, amt):
     if outer == 1:
@@ -116,7 +115,7 @@ def database_process_transactions(outer, inner, acct_no, amt):
         elif inner == 4:
             # make payoff
             pass
-    else :
+    else:
         print("Error processing transactions")
 
 

@@ -2,7 +2,8 @@ from clbs_classes.login import Login
 from datetime import datetime
 from clbs_classes.navigation import Navigation
 from clbs_classes.transaction import Transaction
-from clbs_functions.database_handler import database_add_user_info, database_reset_password, database_validate_credentials
+from clbs_functions.database_handler import (database_add_user_info, database_reset_password,
+                                             database_validate_credentials)
 import maskpass
 import time
 
@@ -237,7 +238,7 @@ def account_menu():
                             Transaction.account_no = acct_no
                             amt = float(input("Enter amount: $"))
                             Transaction.amount = amt
-                            return  inner_opt, loan_option, Transaction.account_no, Transaction.amount
+                            return inner_opt, loan_option, Transaction.account_no, Transaction.amount
 
                         elif loan_option == 2:
                             acct_no = input("Enter account: ")

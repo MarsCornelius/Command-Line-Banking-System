@@ -58,13 +58,6 @@ class DepositAccount:
     def current_balance(self, current_balance):
         self._current_balance = current_balance
 
-
-    def open_account(self):
-        pass
-
-    def close_account(self):
-        pass
-
     def deposit_funds(self, account_no="", acct_type="", amount=0):
         pass
 
