@@ -1,7 +1,7 @@
 class Transaction:
-    def __init__(self, account_no, acct_type, transaction_type, transaction_id, amount, transfer_from, transfer_to):
+    def __init__(self, account_no="", transaction_type="", transaction_id="",
+                 amount=0, transfer_from="", transfer_to=""):
         self._account_no = account_no
-        self._acct_type = acct_type
         self._transaction_type = transaction_type
         self._transaction_id = transaction_id
         self._amount = amount
@@ -18,17 +18,6 @@ class Transaction:
             self._account_no = account_no
         except ValueError:
             print("Invalid account number.")
-
-    @property
-    def acct_type(self):
-        return self._acct_type
-
-    @acct_type.setter
-    def acct_type(self, acct_type):
-        try:
-            self._acct_type = acct_type
-        except ValueError:
-            print("Invalid account type.")
 
     @property
     def transaction_type(self):
@@ -85,11 +74,5 @@ class Transaction:
         except ValueError:
             print("Invalid deposit account.")
 
-    def display_transaction_history(self, account_no, acct_type):
-        pass
-
-    def filter_transactions(self, account_no, transaction_id, amount, date):
-        pass
-
-    def export_transactions(self, account_no):
+    def display_transaction_history(self, account_no):
         pass

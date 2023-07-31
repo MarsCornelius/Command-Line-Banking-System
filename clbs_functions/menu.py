@@ -1,6 +1,7 @@
 from clbs_classes.login import Login
 from datetime import datetime
 from clbs_classes.navigation import Navigation
+from clbs_classes.transaction import Transaction
 from clbs_functions.database_handler import database_add_user_info, database_reset_password, \
     database_validate_credentials
 import maskpass
@@ -190,15 +191,85 @@ def account_menu():
                 inner_opt = int(input("\n1.Deposit Accounts\n2.Loan Accounts\n3.Back\n--> "))
                 if inner_opt == 1:
                     while True:
-                        dep_option = int(input("1.Deposit 2.Withdrawal 3.Transfer 4.History 5.Open "
-                                               "6.Close 7.Back 8.Exit\n--> "))
-                        # missing functionality
+                        dep_option = int(input("1.Deposit 2.Withdrawal 3.Transfer 4.History 5.Back 6.Exit\n--> "))
+                        if dep_option == 1:
+                            acct_no = input("Enter account: ")
+                            Transaction.account_no = acct_no
+                            amt = float(input("Enter amount: $"))
+                            Transaction.amount = amt
+                            return inner_opt, dep_option, Transaction.account_no, Transaction.amount
+
+                        elif dep_option == 2:
+                            acct_no = input("Enter account: ")
+                            Transaction.account_no = acct_no
+                            amt = float(input("Enter amount: $"))
+                            Transaction.amount = amt
+                            return inner_opt, dep_option, Transaction.account_no, Transaction.amount
+
+                        elif dep_option == 3:
+                            debit_acct = input("Enter debit account: ")
+                            Transaction.transfer_from = debit_acct
+                            credit_acct = input("Enter credit account: ")
+                            Transaction.transfer_to = credit_acct
+                            amt = float(input("Enter amount: $"))
+                            Transaction.amount = amt
+                            return inner_opt, dep_option, Transaction.transfer_from, Transaction.transfer_to
+
+                        elif dep_option == 4:
+                            acct_no = input("Enter account: ")
+                            Transaction.account_no = acct_no
+                            return inner_opt, dep_option, Transaction.account_no
+
+                        elif dep_option == 5:
+                            account_menu()
+                        elif dep_option == 6:
+                            print("\nExiting System...")
+                            time.sleep(3)
+                            print("Good-Bye!")
+                            exit(0)
+                        else:
+                            print("Account Error: Invalid Input")
                 elif inner_opt == 2:
                     while True:
                         loan_option = int(input("1.Make Payment 2.Principal Payment 3.Make Interest Payment "
-                                                "4.Payoff 5.Back\n--> "))
-                        # missing functionality
-                elif inner_opt ==3:
+                                                "4.Payoff 5.Back 6.Exit\n--> "))
+                        if loan_option == 1:
+                            acct_no = input("Enter account: ")
+                            Transaction.account_no = acct_no
+                            amt = float(input("Enter amount: $"))
+                            Transaction.amount = amt
+                            return  inner_opt, loan_option, Transaction.account_no, Transaction.amount
+
+                        elif loan_option == 2:
+                            acct_no = input("Enter account: ")
+                            Transaction.account_no = acct_no
+                            amt = float(input("Enter amount: $"))
+                            Transaction.amount = amt
+                            return inner_opt, loan_option, Transaction.account_no, Transaction.amount
+
+                        elif loan_option == 3:
+                            credit_acct = input("Enter account: ")
+                            Transaction.transfer_to = credit_acct
+                            amt = float(input("Enter amount: $"))
+                            Transaction.amount = amt
+                            return inner_opt, loan_option, Transaction.transfer_from, Transaction.transfer_to
+
+                        elif loan_option == 4:
+                            acct_no = input("Enter account: ")
+                            Transaction.account_no = acct_no
+                            return inner_opt, loan_option, Transaction.account_no
+
+                        elif loan_option == 5:
+                            account_menu()
+
+                        elif loan_option == 6:
+                            print("\nExiting System...")
+                            time.sleep(3)
+                            print("Good-Bye!")
+                            exit(0)
+                        else:
+                            print("Account Error: Invalid Input")
+                elif inner_opt == 3:
                     account_menu()
                 else:
                     print("Account Error: Invalid input\n")
