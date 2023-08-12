@@ -1,9 +1,9 @@
-from clbs_classes.login import Login
+from classes.login import Login
 from datetime import datetime
-from clbs_classes.navigation import Navigation
-from clbs_classes.transaction import Transaction
-from clbs_functions.database_handler import (database_add_user_info, database_reset_password,
-                                             database_validate_credentials)
+from classes.navigation import Navigation
+from classes.transaction import Transaction
+from functions.database_handler import (database_add_user_info, database_reset_password,
+                                        database_validate_credentials)
 import maskpass
 import time
 

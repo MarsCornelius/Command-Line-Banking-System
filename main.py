@@ -1,5 +1,5 @@
-from clbs_functions.menu import account_menu, launch
-from clbs_functions.database_handler import database_process_transactions
+from functions.menu import account_menu, launch
+from functions.database_handler import database_process_transactions
 
 
 if __name__ == '__main__':
